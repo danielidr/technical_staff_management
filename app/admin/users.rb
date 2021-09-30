@@ -5,7 +5,7 @@ ActiveAdmin.register User do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :password, :name, :role
+  permit_params :email, :password, :name, :role_id
   #
   # or
   #
@@ -20,10 +20,10 @@ ActiveAdmin.register User do
       input :email
       input :password
       input :name
-      f.input :role,
+      f.input :role_id,
         label: 'Role',
         as: :select,
-        collection: Role.pluck(:name)
+        collection: Role.pluck(:name, :id)
     end
     actions
   end
