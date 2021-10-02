@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_10_02_015651) do
   create_table "orders", force: :cascade do |t|
     t.datetime "scheduled_at"
     t.text "comments"
-    t.integer "status"
+    t.integer "status", default: 0
     t.bigint "client_id"
     t.bigint "address_id"
     t.bigint "user_id"
