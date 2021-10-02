@@ -11,34 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+
+  <div class="form-group col-12 col-md-5">
+    <%= form.label "Nombre(s)" %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "Nombre" %>
+  </div>
+  
+  <div class="form-group col-12 col-md-5">
+    <%= form.label "Apellido(s)" %>
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Apellido" %>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
-
-  <div class="field">
+  <div class="form-group col-12 col-md-5">
     <%= form.label :rut %>
-    <%= form.text_field :rut %>
+    <%= form.text_field :rut, class: "form-control", placeholder: "Ej. 12.566.232-4" %>
   </div>
 
-  <div class="field">
+  <div class="form-group col-12 col-md-5">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.email_field :email, class: "form-control", placeholder: "example@example.com" %>
   </div>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
+  <div class="form-group col-12 col-md-5">
+    <%= form.label :Teléfono %>
+    <%= form.telephone_field :phone, class: "form-control", placeholder: "Ej. +56 994975529" %>
   </div>
 
-  <div class="field">
-    <%= form.label :full_address %>
-    <%= form.text_field :full_address %>
+  <div class="form-group col-12 col-md-5">
+    <%= form.label :Dirección %>
+    <%= form.text_field :full_address, class: "form-control", placeholder: "Ej. Rebeca Matte 18, Santiago, Región Metropolitana" %>
   </div>
 
   <div class="actions">

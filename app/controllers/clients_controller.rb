@@ -1,9 +1,9 @@
 class ClientsController < ApplicationController
-
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!
+    before_action :set_client, only: [:show, :edit, :update, :destroy]
 
     def index
-        @clients = Client.all
+        @clients = Client.eager_load(:address)
     end
 
     def show
