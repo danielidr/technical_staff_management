@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scheduled_at: 2021-10-01 22:56:51
+  comments: MyText
+  status: 1
+  client: one
+  address: one
+
+two:
+  scheduled_at: 2021-10-01 22:56:51
+  comments: MyText
+  status: 1
+  client: two
+  address: two
