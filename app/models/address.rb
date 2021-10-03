@@ -1,3 +1,4 @@
 class Address < ApplicationRecord
-    has_one :client, dependent: :nullify
+    has_one :client
+    has_one :order
 end
