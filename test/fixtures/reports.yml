@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tests_performed: MyText
+  report_comments: MyText
+  order: one
+
+two:
+  tests_performed: MyText
+  report_comments: MyText
+  order: two
