@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_client, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource    
 
     def index
         @clients = Client.eager_load(:address)
@@ -10,14 +10,12 @@ class ClientsController < ApplicationController
     end
 
     def new
-        @client = Client.new
     end
 
     def edit
     end
 
     def create
-        @client = Client.new(client_params)
         puts "************#{params.inspect}"
         address = Address.create(full_address: params[:client][:full_address])
         @client.address_id = address.id
@@ -53,13 +51,9 @@ class ClientsController < ApplicationController
         end
     end
 
-  private
-
-    def set_client
-      @client = Client.find(params[:id])
-    end
+    private
 
     def client_params
-      params.require(:client).permit(:first_name, :last_name, :rut, :email, :phone)
+        params.require(:client).permit(:first_name, :last_name, :rut, :email, :phone)
     end
 end

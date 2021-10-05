@@ -6,4 +6,12 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_many :orders
+
+  def coord?
+    role.name == "Coordinador"
+  end
+
+  def tech?
+    role.name == 'Técnico'
+  end
 end

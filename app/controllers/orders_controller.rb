@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
   before_action :set_client, only: [:edit, :new, :create]
 
   def index
@@ -11,15 +11,12 @@ class OrdersController < ApplicationController
   end
 
   def new
-      @order = Order.new
   end
 
   def edit
   end
   
   def create
-    @order = Order.new(order_params)
-
     respond_to do |format|
         if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -52,10 +49,6 @@ def destroy
 end
 
   private
-
-    def set_order
-      @order = Order.find(params[:id])
-    end
 
     def set_client
       @clients = Client.pluck :rut, :id
