@@ -5,7 +5,7 @@ ActiveAdmin.register User do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :password, :name, :role_id
+  permit_params :email, :password, :name, :role_id, :is_active
   #
   # or
   #
@@ -14,6 +14,21 @@ ActiveAdmin.register User do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+  index do
+    column :id
+    column :email
+    column :name
+    column :role
+    column :created_at
+    column :updated_at
+    column :actions do |item|
+      links = []
+      links << link_to('Show', admin_user_path(item.id))
+      links << link_to('Edit', edit_admin_user_path(item.id))
+      links.join(' ').html_safe
+    end
+  end
 
   form do |f|
     inputs 'Agregar un nuevo usuario' do
@@ -24,6 +39,7 @@ ActiveAdmin.register User do
         label: 'Role',
         as: :select,
         collection: Role.pluck(:name, :id)
+      input :is_active
     end
     actions
   end
