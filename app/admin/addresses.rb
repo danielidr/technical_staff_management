@@ -16,6 +16,8 @@ ActiveAdmin.register Address do
     column :updated_at
   end
 
+  filter :full_address
+
   #
   # or
   #
