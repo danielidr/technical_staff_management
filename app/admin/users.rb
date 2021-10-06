@@ -20,6 +20,7 @@ ActiveAdmin.register User do
     column :email
     column :name
     column :role
+    column :is_active
     column :created_at
     column :updated_at
     column :actions do |item|
@@ -42,6 +43,19 @@ ActiveAdmin.register User do
       input :is_active
     end
     actions
+  end
+
+  filter :email, as: :select
+  filter :is_active
+
+  controller do
+    def update
+      if (params[:user][:password].blank? && params[:user] [:password_confirmation].blank?)
+        params[:user].delete("password")
+        params[:user].delete("password_confirmation")
+      end
+    super 
+    end
   end
   
 end

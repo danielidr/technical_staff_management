@@ -21,4 +21,5 @@ class User < ApplicationRecord
   def tech?
     role.name == 'Técnico'
   end
+
 end

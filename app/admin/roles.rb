@@ -6,6 +6,19 @@ ActiveAdmin.register Role do
   # Uncomment all parameters which should be permitted for assignment
   #
   permit_params :name
+
+  filter :users, as: :select
+
+  index do
+    id_column
+    column :name
+    column :users do |role|
+      role.users.count
+    end
+    column :created_at
+    column :updated_at
+    actions
+  end
   #
   # or
   #
