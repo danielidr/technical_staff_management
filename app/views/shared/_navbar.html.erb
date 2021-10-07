@@ -2,6 +2,7 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse">
         <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to "Edit profile", edit_user_registration_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
             <% else  %>
             <li class="nav-item"><%=link_to 'Log in', new_user_session_path, class: "nav-link" %></li>
