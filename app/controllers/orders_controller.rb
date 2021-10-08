@@ -18,6 +18,8 @@ class OrdersController < ApplicationController
   
   def create
     respond_to do |format|
+      @order = Order.new(order_params)
+      @order.created_by = current_user
         if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
