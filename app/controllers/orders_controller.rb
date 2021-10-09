@@ -4,7 +4,18 @@ class OrdersController < ApplicationController
   before_action :set_client, only: [:edit, :new, :create]
 
   def index
-    @orders = Order.all
+    if params[:q]
+      if current_user.role == "Técnico"
+        orders = Order.where(user_id: current_user.id)
+        @q = orders.includes(:client).ransack(params[:q])
+        @orders = @q.result(distinct: true)
+      else
+        @q = Order.includes(:client).ransack(params[:q])
+        @orders = @q.result(distinct: true)
+      end
+    else
+      @orders = Order.all
+    end
   end
 
   def show
