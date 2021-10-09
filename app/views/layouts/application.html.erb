@@ -10,16 +10,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/8a3649dc26.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= render 'shared/navbar' %>
-    <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-    </div>
+  <body class="landing is-preload">
+    <div id="page-wrapper">
+			<!-- Navbar -->
+      <%= render 'shared/navbar' %>
+
+			<!-- Main -->
+				<section id="main" class="container">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <%= yield %>
+				</section>
+		</div>
+
+  <!-- Footer -->
+		<%= render 'shared/footer' %>
+
   </body>
+      <%= javascript_include_tag 'application' %>
 </html>
