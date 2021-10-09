@@ -1,46 +1,50 @@
-<h2>Editar datos de perfil</h2>
+<div class="col-12 col-md-5">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, remote: true) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <h2>Editar datos de perfil</h2>
 
-  <%= f.hidden_field :id %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, remote: true) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="form-group col-12 col-md-5">
-    <%= f.label :nombre %><br />
-    <%= f.text_field :name, autofocus: true, class: "form-control" %>
-  </div>
+    <%= f.hidden_field :id %>
 
-  <div class="form-group col-12 col-md-5">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-  </div>
+    <div class="form-group">
+      <%= f.label :nombre %><br />
+      <%= f.text_field :name, autofocus: true, class: "form-control" %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :contraseña %> <i>(déjelo en blanco si no quiere cambiarla)</i><br />
+      <%= f.password_field :password, placeholder: "Nueva contraseña", class: "form-control" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> caracteres mínimo</em>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :confirmar_contraseña %><br />
+      <%= f.password_field :password_confirmation, placeholder: "Nueva contraseña", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :contraseña_actual %> <i>(necesitamos su contraseña actual para confirmar sus cambios)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update", data: { disable_with: 'Updating...' }, id: "edit_button", onclick: "blankPasswords()" %>
+    </div>
   <% end %>
 
-  <div class="form-group col-12 col-md-5">
-    <%= f.label :contraseña %> <i>(déjelo en blanco si no quiere cambiarla)</i><br />
-    <%= f.password_field :password, placeholder: "Nueva contraseña", class: "form-control" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> caracteres mínimo</em>
-    <% end %>
-  </div>
+  <%= link_to "Back", :back %>
 
-  <div class="form-group col-12 col-md-5">
-    <%= f.label :confirmar_contraseña %><br />
-    <%= f.password_field :password_confirmation, placeholder: "Nueva contraseña", class: "form-control" %>
-  </div>
-
-  <div class="form-group col-12 col-md-5">
-    <%= f.label :contraseña_actual %> <i>(necesitamos su contraseña actual para confirmar sus cambios)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update", data: { disable_with: 'Updating...' }, id: "edit_button", onclick: "blankPasswords()" %>
-  </div>
-<% end %>
-
-<%= link_to "Back", :back %>
+</div>

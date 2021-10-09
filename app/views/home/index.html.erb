@@ -1,26 +1,76 @@
-<h1>Home#index</h1>
-
-<% if user_signed_in? %>
+<!-- Banner -->
+<section id="banner">
+    <% if user_signed_in? %>
     <div class="row">
-        <div class="col-12 col-md-3 mt-4">
+        <div class="col-md-4 mt-4">
+        </div>
+        <div class="col-12 col-md-4 mt-4">
             <h3>Buscar ordenes</h3>
             <%= search_form_for @q do |f| %>
                 <div class="form-group">
-                    <%= f.label :status %>
+                    <%= f.label :status, class: "label-home" %>
                     <%= f.select :status_eq, options_for_select(@statuses), class: "form-control" %>
                 </div>
                 <div class="form-group">
-                    <%= f.label :rut_del_cliente %>
+                    <%= f.label :rut_del_cliente, class: "label-home" %>
                     <%= f.search_field :client_rut_eq, class: "form-control" %>
                 </div>
                 <div class="form-group">
-                    <%= f.label "Fecha de orden (desde)" %>
+                    <%= f.label "Fecha de orden (desde)", class: "label-home" %>
                     <%= f.date_field :scheduled_at_gteq, class: "form-control" %>
-                    <%= f.label "Fecha de orden (hasta)" %>
+                    <%= f.label "Fecha de orden (hasta)", class: "label-home" %>
                     <%= f.date_field :scheduled_at_lteq, class: "form-control" %>
                 </div>
                 <%= f.submit "Search", class: "btn btn-primary" %>
             <% end %>
         </div>
+        <div class="col-md-4 mt-4">
+        </div>
     </div>
-<% end %>
+    <% else %>
+        <h2>TechStaff Management</h2>
+            <p>Gestiona grupos de trabajo en terreno a traves de esta aplicación</p>
+            <ul class="actions special">
+                <li><%=link_to 'Iniciar sesión', new_user_session_path, class: "button primary"%></li>
+            </ul>
+    <% end %>
+</section>
+
+<!-- Main -->
+<section id="main" class="container">
+	<section class="box special">
+		<header class="major">
+			<h2>Diseñado para coordinadores
+				<br />
+			y personal en terreno</h2>
+			<p>Se puede hacer el registro de clientes y el ingreso de ordenes</p>
+		</header>
+	</section>
+
+	<section class="box special features">
+		<div class="features-row">
+			<section>
+				<span class="icon solid major fa-arrow-alt-circle-right accent2"></span>
+				<h3>Asignar ordenes</h3>
+                <p>Desde coordinación se podran crear y asignar ordenes para los técnicos en terreno</p>
+			</section>
+			<section>
+				<span class="icon solid major fa-list-ul accent3"></span>
+				<h3>Técnico puede gestionar ordenes</h3>
+				<p>Los técnicos podran ver todos los datos de las ordenes que tienen asignadas y modificar el status de las mismas</p>
+			</section>
+		</div>
+		<div class="features-row">
+			<section>
+				<span class="icon solid major fa-map-marker-alt accent4"></span>
+					<h3>Enviar ubicación</h3>
+						<p>Cuando el técnico cambie el status de la orden a "En el lugar", desde coordinación podran saber su ubicación</p>
+			</section>
+				<section>
+					<span class="icon solid major fa-sticky-note accent5"></span>
+					<h3>Enviar reporte a cliente</h3>
+					<p>Cuando el técnico termina un servicio, se genera un reporte que le llegara al cliente via email</p>
+				</section>
+		</div>
+	</section>
+</section>

@@ -7,6 +7,10 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse">
             <ul class="navbar-nav ml-auto">
                 <% if user_signed_in? %>
+                    <% if current_user.role.name == "Coordinador" %>
+                        <li class="nav-item"><%= link_to "Clientes", clients_path, class: "nav-link" %></li>
+                        <li class="nav-item"><%= link_to "Ordenes", orders_path, class: "nav-link" %></li>
+                    <% end %>
                     <li class="nav-item"><%= link_to "Mi perfil", profiles_index_path, class: "nav-link" %></li>
                     <li class="nav-item"><%= link_to "Editar perfil", edit_user_registration_path, class: "nav-link" %></li>
                     <li class="nav-item"><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
