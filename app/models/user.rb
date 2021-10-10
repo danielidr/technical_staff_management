@@ -7,6 +7,8 @@ class User < ApplicationRecord
   belongs_to :role
   has_many :orders
 
+  ratyrate_rater
+
   def active_for_authentication?
     #remember to call the super
     #then put our own check to determine "active" state using 

@@ -7,4 +7,6 @@ class Order < ApplicationRecord
 
   enum status: ["Creada", "Asignada", "En el lugar", "Terminada"]
 
+  ratyrate_rateable "puntuality", "speed", "performance"
+
 end

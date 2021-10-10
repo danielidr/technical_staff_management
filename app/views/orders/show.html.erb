@@ -27,3 +27,11 @@
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
+
+<br>
+
+Puntuality  : <%= rating_for @order, 'puntuality', disable_after_rate: true, cancel: false %>
+Speed : <%= rating_for @order, 'speed', disable_after_rate: true, cancel: false %>
+Performance  : <%= rating_for @order, 'performance', disable_after_rate: true, cancel: false %>
+
+<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>

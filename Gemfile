@@ -13,6 +13,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'faker'
 gem 'cancancan'
 gem 'ransack'
+gem 'ratyrate'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
