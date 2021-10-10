@@ -1,37 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Scheduled at:</strong>
-  <%= @order.scheduled_at %>
-</p>
+<div class="row px-4">
+  <div class="col-12 col-md-6 pb-4x">
+    <p>
+      <strong>Estado:</strong>
+      <%= @order.status %>
+    </p>
+    
+    <p>
+      <strong>Rut de Cliente:</strong>
+      <%= @order.client.rut %>
+    </p>
+    
+    <p>
+      <strong>Nombre(s):</strong>
+      <%= @order.client.first_name %>
+    </p>
+    
+    <p>
+      <strong>Apellido(s):</strong>
+      <%= @order.client.last_name %>
+    </p>
+    
+    <p>
+      <strong>Fecha y hora:</strong>
+      <%= @order.scheduled_at.strftime("%d-%m-%Y %H:%M") %>
+    </p>
+    
+    <p>
+      <strong>Comentarios:</strong>
+      <%= @order.comments %>
+    </p>
+    
+    <%= link_to 'Edit', edit_order_path(@order) %> |
+    <%= link_to 'Back', orders_path %>
+  </div>
 
-<p>
-  <strong>Comments:</strong>
-  <%= @order.comments %>
-</p>
+  <div class="col-12 col-md-6">
+    <% if @order.status == "Terminada" %>
+      <p>
+        <strong>Calificación de la gestión del técnico en la orden:</strong>
+      </p>
+      
+      Puntualidad  : <%= rating_for @order, 'puntuality', disable_after_rate: true, cancel: false %>
+      Tiempo de ejecución : <%= rating_for @order, 'speed', disable_after_rate: true, cancel: false %>
+      Calidad  : <%= rating_for @order, 'performance', disable_after_rate: true, cancel: false %>
+    <% end %>
+  </div>
+</div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @order.status %>
-</p>
-
-<p>
-  <strong>Client:</strong>
-  <%= @order.client %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
-
-<br>
-
-Puntuality  : <%= rating_for @order, 'puntuality', disable_after_rate: true, cancel: false %>
-Speed : <%= rating_for @order, 'speed', disable_after_rate: true, cancel: false %>
-Performance  : <%= rating_for @order, 'performance', disable_after_rate: true, cancel: false %>
-
-<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>
+<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false, "data-turbolinks-eval": false %>
