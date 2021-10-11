@@ -35,7 +35,9 @@ class OrdersController < ApplicationController
 
       @order = Order.new(order_params)
       slot = params[:order][:time_slot].to_i
-      @order.scheduled_at = @order.scheduled_at.time + slot.hours
+      if @order.scheduled_at != nil
+        @order.scheduled_at = @order.scheduled_at.time + slot.hours
+      end
       @order.created_by = current_user
         if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
