@@ -16,6 +16,6 @@ class HomeController < ApplicationController
   private
 
     def set_statuses
-      @statuses = Order.statuses.keys
+      @statuses = Order.statuses
     end
 end

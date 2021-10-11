@@ -4,8 +4,10 @@ class OrdersController < ApplicationController
   before_action :set_client, only: [:edit, :new, :create]
   before_action :set_user, only: [:edit, :new, :create]
   before_action :set_slots
+  before_action :set_statuses, only: %i[edit new create]
 
   def index
+    puts "********* #{params.inspect}"
     if params[:q]
       if current_user.role == "Técnico"
         orders = Order.where(user_id: current_user.id)
@@ -17,6 +19,7 @@ class OrdersController < ApplicationController
       end
     else
       @orders = Order.all
+
     end
   end
 
@@ -82,6 +85,10 @@ end
     def set_user
       users = User.includes(:role).where(role_id: 2)
       @users = users.pluck :name, :id
+    end
+
+    def set_statuses
+      @statuses = Order.statuses.keys
     end
 
     def order_params

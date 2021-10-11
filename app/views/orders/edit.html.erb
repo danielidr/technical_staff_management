@@ -1,6 +1,31 @@
-<h1>Editing Order</h1>
+<h2 class="mx-3">Editar Orden <%=@order.id%></h2>
 
-<%= render 'form', order: @order %>
+<% if current_user.role.id == 1 %>
+    <%= render 'form', order: @order %>
+<% end %>
+
+<%= form_with(model: @order, local: true) do |form| %>
+    <% if @order.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+        <ul>
+        <% @order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group col-12 col-md-6">
+        <%= form.label :modificar_estado %>
+        <%= form.select :status, options_for_select(@statuses) %>
+    </div>
+
+    <div class="actions mx-3">
+        <%= form.submit "Editar" %>
+    </div>
+<% end %>
 
 <%= link_to 'Show', @order %> |
 <%= link_to 'Back', orders_path %>

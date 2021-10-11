@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h2 class="mx-3">Orden <%=@order.id%></h2>
+
 <div class="row px-4">
   <div class="col-12 col-md-6 pb-4x">
     <p>
@@ -37,7 +39,7 @@
   </div>
 
   <div class="col-12 col-md-6">
-    <% if @order.status == "Terminada" %>
+    <% if @order.status == "Terminada" && current_user.role.id == 1 %>
       <p>
         <strong>Calificación de la gestión del técnico en la orden:</strong>
       </p>
