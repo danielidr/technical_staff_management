@@ -28,7 +28,7 @@
 
   <div class="form-group col-12 col-md-6">
     <%= form.label "Hora" %>
-    <%= form.select :time_slot, options_for_select(@slots) %>
+    <%= form.select :time_slot, options_for_select(@slots), disabled: true %>
   </div>
 
   <div class="form-group col-12 col-md-12">

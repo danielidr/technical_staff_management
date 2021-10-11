@@ -35,7 +35,6 @@ class OrdersController < ApplicationController
 
       @order = Order.new(order_params)
       slot = params[:order][:time_slot].to_i
-      puts "*****#{@order.scheduled_at.inspect}"
       @order.scheduled_at = @order.scheduled_at.time + slot.hours
       @order.created_by = current_user
         if @order.save
