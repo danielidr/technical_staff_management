@@ -18,12 +18,12 @@
 
   <div class="form-group col-12 col-md-6">
     <%= form.label "Técnico" %>
-    <%= form.select :user_id, options_for_select(@users), prompt: "Seleccionar", class: "form-control" %>
+    <%= form.select :user_id, options_for_select(@users), onchange: "check_slots()", prompt: "Seleccionar", class: "form-control" %>
   </div>
 
   <div class="form-group col-12 col-md-6">
     <%= form.label "Fecha" %>
-    <%= form.date_field :scheduled_at, min: Date.today, class: "form-control" %>
+    <%= form.date_field :scheduled_at, min: Date.today, class: "form-control", onchange: "check_slots()"%>
   </div>
 
   <div class="form-group col-12 col-md-6">
