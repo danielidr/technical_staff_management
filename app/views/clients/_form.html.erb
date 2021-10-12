@@ -24,7 +24,8 @@
 
   <div class="form-group col-12 col-md-5">
     <%= form.label :rut %>
-    <%= form.text_field :rut, class: "form-control", placeholder: "Ej. 12.566.232-4" %>
+    <%= form.text_field :rut, class: "form-control", placeholder: "Ej. 12566232-4", id: "txt_rut" %>
+    <p class="text-info" id="msgerror"></p>
   </div>
 
   <div class="form-group col-12 col-md-5">
@@ -42,7 +43,7 @@
     <%= form.text_field :full_address, class: "form-control", placeholder: "Ej. Rebeca Matte 18, Santiago, Región Metropolitana" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions" id="btnvalida">
+    <%= form.submit "Aceptar" %>
   </div>
 <% end %>
