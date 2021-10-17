@@ -38,6 +38,20 @@
 		line-height: 1;
 	}
 
+	.notice {
+		color: green;
+	}
+
+	.field_with_errors {
+		padding: 2px;
+		background-color: red;
+		display: table;
+	}
+
+	.alert {
+		color: red;
+	}
+
 	ol, ul {
 		list-style: none;
 	}
@@ -138,9 +152,6 @@
 		font-style: italic;
 	}
 
-	p {
-		margin: 0 0 2em 0;
-	}
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #646464;
@@ -256,7 +267,7 @@
 	.container {
 		margin: 0 auto;
 		max-width: calc(100% - 5em);
-		width: 60em;
+		width: 70em;
 	}
 
 		.container.xsmall {
@@ -1458,12 +1469,13 @@
 	#banner {
 		background-attachment: scroll,							fixed;
 		background-color: #666;
-		background-image: url("/assets/overlay.png"), url("/assets/banner.jpeg");
+		background-image: url("/assets/overlay.png"), url("/assets/banner4.jpeg");
 		background-position: top left,						center center;
 		background-repeat: repeat,							no-repeat;
 		background-size: auto,							cover;
 		padding: 12em 0 20em 0;
 		text-align: center;
+		margin-bottom: 2.5em;
 	}
 
 		#banner :last-child {
