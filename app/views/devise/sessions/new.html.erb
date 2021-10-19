@@ -29,6 +29,8 @@
       </div>
     <% end %>
 
+    <%= link_to "Iniciar sesión con Google", user_google_oauth2_omniauth_authorize_path %>
+
     <div class="my-4">
       <%= link_to "Iniciar sesión como Administrador" , admin_root_path, class: "text-decoration-none" %>
     </div>

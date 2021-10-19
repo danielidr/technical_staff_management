@@ -1,30 +1,40 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # You should configure your model like this:
-  # devise :omniauthable, omniauth_providers: [:twitter]
+  def google_oauth2
 
-  # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+    @user = User.from_omniauth(request.env["omniauth.auth"])
 
-  # More info at:
-  # https://github.com/heartcombo/devise#omniauth
+    if @user.persisted?
+      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
+      sign_in_and_redirect @user, :event => :authentication
+    else
+      session["devise.google_data"] = request.env["omniauth.auth"].except(:extra) #Removing extra as it can overflow some session stores
+      redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
+    end
+  end
 
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
+  protected
 
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+  def after_omniauth_failure_path_for(_scope)
+    new_user_session_path
+  end
 
-  # protected
+  def after_sign_in_path_for(resource_or_scope)
+    stored_location_for(resource_or_scope) || root_path
+  end
 
-  # The path used when OmniAuth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
+  private
+
+  def from_google_params
+    @from_google_params ||= {
+      email: auth.info.email,
+      name: auth.info.name,
+    }
+  end
+
+  def auth
+    @auth ||= request.env['omniauth.auth']
+  end
+
 end
