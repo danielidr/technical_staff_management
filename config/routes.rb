@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :clients
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, :controllers => { :registrations => 'users/registrations' }
+  devise_for :users, :controllers => { :registrations => 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
   get 'home/index'
   root to: 'home#index'
 
