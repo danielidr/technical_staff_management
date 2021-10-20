@@ -7,9 +7,9 @@ class OrdersController < ApplicationController
   before_action :set_statuses, only: %i[edit new create]
 
   def index
-    puts "********* #{params.inspect}"
+
     if params[:q]
-      if current_user.role == "Técnico"
+      if current_user.role.name == "Técnico"
         orders = Order.where(user_id: current_user.id)
         @q = orders.includes(:client).ransack(params[:q])
         @orders = @q.result(distinct: true)
@@ -18,8 +18,11 @@ class OrdersController < ApplicationController
         @orders = @q.result(distinct: true)
       end
     else
-      @orders = Order.all
-
+      if current_user.role.name == "Técnico"
+        @orders = Order.where(user_id: current_user.id)
+      else
+        @orders = Order.all
+      end
     end
   end
 

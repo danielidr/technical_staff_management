@@ -1,37 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-12 px-3">
+    <h2 class="ml-2">Ordenes</h2>
 
-<h2>Ordenes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Estado</th>
+          <% if current_user.role.id == 1 %>
+            <th>Técnico</th>
+          <% end %>
+          <th class="d-none d-sm-table-cell">Rut</th>
+          <th class="d-none d-sm-table-cell">Nombre(s)</th>
+          <th class="d-none d-sm-table-cell">Apellido(s)</th>
+          <th class="d-none d-sm-table-cell">Dirección</th>
+          <th>Fecha y hora</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Estado</th>
-      <th>Rut</th>
-      <th>Nombre(s)</th>
-      <th>Apellido(s)</th>
-      <th>Fecha y hora</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= order.status %></td>
+            <% if current_user.role.id == 1 %>
+              <td class="d-none d-sm-table-cell"><%= order.user.name %></td>
+            <% end %>
+            <td class="d-none d-sm-table-cell"><%= order.client.rut %></td>
+            <td class="d-none d-sm-table-cell"><%= order.client.first_name %></td>
+            <td class="d-none d-sm-table-cell"><%= order.client.last_name %></td>
+            <td class="d-none d-sm-table-cell"><%= order.client.address.full_address %></td>
+            <td><%= order.scheduled_at.strftime("%d-%m-%Y %H:%M") %></td>
+            <td><%= link_to 'Show', order %></td>
+            <td><%= link_to 'Edit', edit_order_path(order) %></td>
+            <% if current_user.role.id == 1 %>
+              <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= order.status %></td>
-        <td><%= order.client.rut %></td>
-        <td><%= order.client.first_name %></td>
-        <td><%= order.client.last_name %></td>
-        <td><%= order.scheduled_at.strftime("%d-%m-%Y %H:%M") %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <br>
 
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+    <%= link_to 'New Order', new_order_path %>
+  </div>
+</div>
