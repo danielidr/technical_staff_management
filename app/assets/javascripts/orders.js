@@ -53,3 +53,16 @@ function emptyAndDisableSlotSelect(){
 $("#order_user_id").change(function() {
     check_slots();
 })
+
+let x = document.getElementById("ubicacion");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+}

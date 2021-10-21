@@ -46,6 +46,13 @@
       <strong>Comentarios:</strong>
       <%= @order.comments %>
     </p>
+
+    <% if @order.status == "Asignada" %>
+      <div id="ubicacion"> </div>
+      <button type="button" class="btn btn-outline-secondary btn-sm" onclick="getLocation()">Llegue al lugar</button>
+    <% end %>
+
+    <br>
     
     <%= link_to 'Edit', edit_order_path(@order) %> |
     <%= link_to 'Back', orders_path %>

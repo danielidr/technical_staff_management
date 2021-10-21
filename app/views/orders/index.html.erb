@@ -33,9 +33,14 @@
             <td class="d-none d-sm-table-cell"><%= order.client.address.full_address %></td>
             <td><%= order.scheduled_at.strftime("%d-%m-%Y %H:%M") %></td>
             <td><%= link_to 'Show', order %></td>
-            <td><%= link_to 'Edit', edit_order_path(order) %></td>
             <% if current_user.role.id == 1 %>
+              <td><%= link_to 'Edit', edit_order_path(order) %></td>
               <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% else %>
+              <% if order.status == "Asignada" %>
+                <div id="ubicacion"> </div>
+                <td><button type="button" class="btn btn-outline-secondary btn-sm" onclick="getLocation()">Llegue al lugar</button></td>
+              <% end %>
             <% end %>
           </tr>
         <% end %>
