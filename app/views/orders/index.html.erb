@@ -39,7 +39,7 @@
             <% else %>
               <% if order.status == "Asignada" %>
                 <div id="ubicacion"> </div>
-                <td><button type="button" class="btn btn-outline-secondary btn-sm" onclick="getLocation()">Llegue al lugar</button></td>
+                <td><button type="button" class="btn btn-outline-secondary btn-sm" onclick="getLocation(<%= order.id %>)">Llegue al lugar</button></td>
               <% end %>
             <% end %>
           </tr>

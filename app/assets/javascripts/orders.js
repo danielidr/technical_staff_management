@@ -56,13 +56,27 @@ $("#order_user_id").change(function() {
 
 let x = document.getElementById("ubicacion");
 
-function getLocation() {
+function getLocation(order_id) {
+    
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition( (position) => {
+            url = window.location.origin
+            locationApiUrl = url + "/api/v1/save_location?order_id=" + order_id + "&longitude=" + position.coords.longitude + '&latitude=' + position.coords.latitude;
+            showPosition(position);
+            saveLocationForOrder(locationApiUrl);
+        });
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+    x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude; 
+}
+
+function saveLocationForOrder(url) {
+
+    fetch(url).then(function(response){
+        alert('Location saved!')
+    })
+
 }

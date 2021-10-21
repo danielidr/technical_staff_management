@@ -49,7 +49,7 @@
 
     <% if @order.status == "Asignada" %>
       <div id="ubicacion"> </div>
-      <button type="button" class="btn btn-outline-secondary btn-sm" onclick="getLocation()">Llegue al lugar</button>
+      <button type="button" class="btn btn-outline-secondary btn-sm" onclick="getLocation(<%= @order.id %>)">Llegue al lugar</button>
     <% end %>
 
     <br>
