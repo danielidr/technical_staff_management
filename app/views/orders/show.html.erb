@@ -47,9 +47,13 @@
       <%= @order.comments %>
     </p>
 
-    <% if @order.status == "Asignada" %>
-      <div id="ubicacion"> </div>
-      <button type="button" class="btn btn-outline-secondary btn-sm" onclick="getLocation(<%= @order.id %>)">Llegue al lugar</button>
+    <% if @order.status == "Asignada" && current_user.role.id == 2 %>
+      <button type="button" id="geo_<%= @order.id %>" class="btn btn-outline-secondary btn-sm" onclick="getLocation(<%= @order.id %>)">Marcar llegada</button>
+    <% elsif @order.status == "En el lugar" && current_user.role.id == 1 %>
+      <p>
+      <strong>Ubicación reportada por técnico:</strong>
+      <%= @order.address.full_address %>
+      </p>
     <% end %>
 
     <br>

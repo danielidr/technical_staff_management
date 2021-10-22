@@ -59,24 +59,22 @@ let x = document.getElementById("ubicacion");
 function getLocation(order_id) {
     
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition( (position) => {
+        navigator.geolocation.getCurrentPosition( (position) => { 
             url = window.location.origin
             locationApiUrl = url + "/api/v1/save_location?order_id=" + order_id + "&longitude=" + position.coords.longitude + '&latitude=' + position.coords.latitude;
-            showPosition(position);
             saveLocationForOrder(locationApiUrl);
+            let button = document.querySelector("#geo_"+order_id);
+            button.disabled = true;
+            button.textContent = 'Llegaste al lugar!'
         });
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        alert('Geolocation is not supported by this browser.')
     }
 }
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude; 
-}
-
 function saveLocationForOrder(url) {
 
     fetch(url).then(function(response){
-        alert('Location saved!')
+        // alert('Location saved!')
     })
 
 }

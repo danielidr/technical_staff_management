@@ -38,8 +38,7 @@
               <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% else %>
               <% if order.status == "Asignada" %>
-                <div id="ubicacion"> </div>
-                <td><button type="button" class="btn btn-outline-secondary btn-sm" onclick="getLocation(<%= order.id %>)">Llegue al lugar</button></td>
+                <td><button type="button" id="geo_<%= order.id %>" class="btn btn-outline-secondary btn-sm" onclick="getLocation(<%= order.id %>)">Marcar llegada</button></td>
               <% end %>
             <% end %>
           </tr>

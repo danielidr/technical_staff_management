@@ -12,16 +12,16 @@ class OrdersController < ApplicationController
       if current_user.role.name == "Técnico"
         orders = Order.where(user_id: current_user.id)
         @q = orders.includes(:client).ransack(params[:q])
-        @orders = @q.result(distinct: true)
+        @orders = @q.result(distinct: true).order(scheduled_at: :ASC)
       else
         @q = Order.includes(:client).ransack(params[:q])
-        @orders = @q.result(distinct: true)
+        @orders = @q.result(distinct: true).order(scheduled_at: :ASC)
       end
     else
       if current_user.role.name == "Técnico"
-        @orders = Order.where(user_id: current_user.id)
+        @orders = Order.where(user_id: current_user.id).order(scheduled_at: :ASC)
       else
-        @orders = Order.all
+        @orders = Order.all.order(scheduled_at: :ASC)
       end
     end
   end
