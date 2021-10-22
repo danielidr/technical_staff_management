@@ -1,3 +1,14 @@
+<% if @order.status == "En el lugar" %>
+  <% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'>
+      <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          initMap(<%=@order.address.latitude%>, <%=@order.address.longitude%>)
+      });
+      </script>
+  <% end %>
+<% end %>
+
 <h2 class="mx-3">Orden <%=@order.id%></h2>
 
 <div class="row px-4">
@@ -67,10 +78,12 @@
       <p>
         <strong>Calificación de la gestión del técnico en la orden:</strong>
       </p>
-      
       Puntualidad  : <%= rating_for @order, 'puntuality', disable_after_rate: true, cancel: false %>
       Tiempo de ejecución : <%= rating_for @order, 'speed', disable_after_rate: true, cancel: false %>
       Calidad  : <%= rating_for @order, 'performance', disable_after_rate: true, cancel: false %>
+
+    <% elsif @order.status == "En el lugar" && current_user.role.id == 1 %>
+        <div id="map"></div>
     <% end %>
   </div>
 </div>

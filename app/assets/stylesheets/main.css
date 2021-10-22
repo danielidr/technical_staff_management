@@ -38,6 +38,11 @@
 		line-height: 1;
 	}
 
+	#map {
+		width: 600px;
+		height: 400px;
+	}
+
 	.notice {
 		color: green;
 	}

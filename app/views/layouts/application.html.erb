@@ -7,11 +7,15 @@
     <meta name="author" content="Danielid Ramirez">
     <meta name="description" content="Gestiona ordenes para técnicos en terreno">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name='turbolinks-visit-control' content='reload'>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
     <script src="https://kit.fontawesome.com/8a3649dc26.js" crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBnQnDS-yNYqBXGjpZSYp2DyhoBoSbfbVg' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:head_tags) %>
   </head>
 
   <body class="landing is-preload">
@@ -31,5 +35,5 @@
 		<%= render 'shared/footer' %>
   
   </body>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
+
 </html>
