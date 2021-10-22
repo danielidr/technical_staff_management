@@ -38,11 +38,6 @@
 		line-height: 1;
 	}
 
-	#map {
-		width: 600px;
-		height: 400px;
-	}
-
 	.notice {
 		color: green;
 	}
@@ -1966,6 +1961,28 @@
 			}
 
 	}
+
+/* Google maps */
+
+	#map {
+		width: 600px;
+		height: 400px;
+	}
+		@media screen and (max-width: 840px) {
+	
+			#map {
+				width: 100% !important;
+			}
+	
+		}
+	
+		@media screen and (max-width: 736px) {
+	
+			#map {
+				max-width: 100%;
+			}
+	
+		}
 
 /* Mobile */
 

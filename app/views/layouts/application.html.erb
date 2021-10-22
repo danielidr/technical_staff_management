@@ -12,7 +12,7 @@
     <%= csp_meta_tag %>
     
     <script src="https://kit.fontawesome.com/8a3649dc26.js" crossorigin="anonymous"></script>
-    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBnQnDS-yNYqBXGjpZSYp2DyhoBoSbfbVg' %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= yield(:head_tags) %>
