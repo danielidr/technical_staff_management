@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery/dist/jquery
+//= require chartkick
+//= require Chart.bundle
 //= require rails-ujs
 //= require popper
 //= require bootstrap
@@ -19,3 +21,4 @@
 //= require_tree .
 //= require jquery.raty
 //= require ratyrate
+

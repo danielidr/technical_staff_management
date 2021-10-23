@@ -1984,6 +1984,27 @@
 	
 		}
 
+/* Graficos */
+	
+		.graph {
+			width: 100%;
+		}
+			@media screen and (max-width: 840px) {
+		
+				#map {
+					width: 100% !important;
+				}
+		
+			}
+		
+			@media screen and (max-width: 736px) {
+		
+				#map {
+					max-width: 100%;
+				}
+		
+			}
+
 /* Mobile */
 
 	@media screen and (max-width: 736px) {
