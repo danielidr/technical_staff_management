@@ -12,13 +12,12 @@ class ProfilesController < ApplicationController
       @count = Order.where(status: 3).group(:user).count
       @orders_status = Hash.new
       @count.map { |hash|
-      @orders_status[hash[0].name] = hash[1]
+        @orders_status[hash[0].name] = hash[1]
       }
-      # @count2 = Order.where(status: 3).group(:user_id).group_by_week(:updated_at, last: 8).count
-      # @orders_status2 = Hash.new
-      # @count.map { |hash|
-      # @orders_status2[hash[0].name] = hash[1]
-      # }
+      @users = User.where(role: 2)
+      @orders_finished = @users.map { |user|
+        {name: user.name, data: user.orders.where(status: 3).group_by_week(:updated_at, last: 8).count}
+    }
     end
   end
 end

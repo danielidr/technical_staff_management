@@ -41,9 +41,14 @@
     </div>
 
     <div class="px-4 mt-4 col-12 col-md-6">
-        <h4 class="font-weight-bold">Cantidad de ordenes terminadas en las ultimas 8 semanas</h4>
-        <%= column_chart @orders_finished, class: "graph", colors: ["#e89980"] %>
-        <%#= line_chart @orders_finished2, class: "graph" %>
+        
+        <% if current_user.role.id == 2 %>
+            <h4 class="font-weight-bold">Cantidad de ordenes terminadas en las ultimas 8 semanas</h4>
+            <%= column_chart @orders_finished, class: "graph", colors: ["#e89980"] %>
+        <% else %>
+            <h4 class="font-weight-bold">Cantidad de ordenes terminadas por técnico en las ultimas 8 semanas</h4>
+            <%= line_chart @orders_finished, class: "graph" %>
+        <% end %>
         <br>
         <h4 class="font-weight-bold">Ordenes Terminadas</h4>
         <table>
