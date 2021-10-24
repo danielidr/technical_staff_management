@@ -1,0 +1,28 @@
+<%= form_with(model: @report, url: reports_create_path, local: true) do |form| %>
+    <% if @report.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(report.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+        <ul>
+        <% report.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group col-12 col-md-12">
+        <%= form.label :pruebas_realizadas %>
+        <%= form.text_area :tests_performed, class: "form-control", placeholder: "Escriba aqui" %>
+    </div>
+
+    <div class="form-group col-12 col-md-12">
+        <%= form.label :comentarios %>
+        <%= form.text_area :report_comments, class: "form-control", placeholder: "Escriba aqui" %>
+    </div>
+
+    <%= form.hidden_field :order_id, value: params[:id] %>
+    <div class="actions mx-3">
+        <%= form.submit "Aceptar" %>
+    </div>
+<% end %>

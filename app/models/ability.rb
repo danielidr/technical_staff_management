@@ -16,9 +16,12 @@ class Ability
         can :create, Order
         can :destroy, Order
         can :update, Order
+        can :read, Report
       elsif user.tech?
         can :read, Order
         can :update, Order
+        can :read, Report
+        can :create, Report
       end
     #
     # The first argument to `can` is the action you are giving the user

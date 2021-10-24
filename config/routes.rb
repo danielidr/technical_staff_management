@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :orders
   resources :clients
+  get 'reports/new'
+  post 'reports/create'
+  get 'reports/show'
   
   post '/rate' => 'rater#create', :as => 'rate'
   get 'profiles/index'

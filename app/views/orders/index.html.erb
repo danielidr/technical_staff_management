@@ -39,6 +39,8 @@
             <% else %>
               <% if order.status == "Asignada" %>
                 <td><button type="button" id="geo_<%= order.id %>" class="btn btn-outline-secondary btn-sm" onclick="getLocation(<%= order.id %>)">Marcar llegada</button></td>
+              <% elsif order.status == "En el lugar" %>
+                <td><%= link_to 'Crear reporte', reports_new_path(id: order.id), class: "btn btn-outline-secondary btn-sm" %></td>
               <% end %>
             <% end %>
           </tr>
