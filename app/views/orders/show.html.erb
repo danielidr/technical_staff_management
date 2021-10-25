@@ -17,6 +17,13 @@
       <strong>Estado:</strong>
       <%= @order.status %>
     </p>
+
+    <% if current_user.role.id == 1 %>
+      <p>
+        <strong>Técnico asignado:</strong>
+        <%= @order.user.name %>
+      </p>
+    <% end %>
     
     <p>
       <strong>Rut de Cliente:</strong>
