@@ -35,7 +35,7 @@
             <td><%= link_to 'Show', order %></td>
             <% if current_user.role.id == 1 %>
               <td><%= link_to 'Edit', edit_order_path(order) %></td>
-              <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td class="d-none d-sm-table-cell"><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% else %>
               <% if order.status == "Asignada" %>
                 <td><button type="button" id="geo_<%= order.id %>" class="btn btn-outline-secondary btn-sm" onclick="getLocation(<%= order.id %>)">Marcar llegada</button></td>

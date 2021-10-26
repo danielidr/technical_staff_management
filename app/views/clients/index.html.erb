@@ -1,35 +1,40 @@
-<h2>Clientes</h2>
+<div class="row">
+  <div class="col-12 px-3">
+    <h2 class="ml-2">Clientes</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre(s)</th>
-      <th>Apellido(s)</th>
-      <th>Rut</th>
-      <th>Email</th>
-      <th>Teléfono</th>
-      <th>Dirección</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre(s)</th>
+          <th>Apellido(s)</th>
+          <th>Rut</th>
+          <th class="d-none d-sm-table-cell">Email</th>
+          <th class="d-none d-sm-table-cell">Teléfono</th>
+          <th class="d-none d-sm-table-cell">Dirección</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @clients.each do |client| %>
-      <tr>
-        <td><%= client.first_name %></td>
-        <td><%= client.last_name %></td>
-        <td><%= client.rut %></td>
-        <td><%= client.email %></td>
-        <td><%= client.phone %></td>
-        <td><%= client.address.full_address %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @clients.each do |client| %>
+          <tr>
+            <td><%= client.first_name %></td>
+            <td><%= client.last_name %></td>
+            <td><%= client.rut %></td>
+            <td class="d-none d-sm-table-cell"><%= client.email %></td>
+            <td class="d-none d-sm-table-cell"><%= client.phone %></td>
+            <td class="d-none d-sm-table-cell"><%= client.address.full_address %></td>
+            <td><%= link_to 'Show', client %></td>
+            <td class="d-none d-sm-table-cell"><%= link_to 'Edit', edit_client_path(client) %></td>
+            <td class="d-none d-sm-table-cell"><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<br>
+    <br>
 
-<%= link_to 'New Client', new_client_path %>
+    <%= link_to 'New Client', new_client_path %>
+
+  </div>
+</div>

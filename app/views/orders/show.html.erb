@@ -77,9 +77,6 @@
     <% end %>
 
     <br>
-    
-    <%= link_to 'Edit', edit_order_path(@order) %> |
-    <%= link_to 'Back', orders_path %>
   </div>
 
   <div class="col-12 col-md-6">
@@ -96,5 +93,8 @@
     <% end %>
   </div>
 </div>
+<br>
+<%= link_to 'Edit', edit_order_path(@order), class: "mx-3" %> |
+<%= link_to 'Back', orders_path, class: "mx-3" %>
 
 <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false, "data-turbolinks-eval": false %>

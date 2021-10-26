@@ -1,27 +1,40 @@
-<p>
-  <strong>Nombre(s):</strong>
-  <%= @client.first_name %>
-</p>
+<h2 class="mx-3">Cliente</h2>
 
-<p>
-  <strong>Apellido(s):</strong>
-  <%= @client.last_name %>
-</p>
+<div class="row px-4">
+  <div class="col-12 col-md-6 pb-4x">
 
-<p>
-  <strong>Rut:</strong>
-  <%= @client.rut %>
-</p>
+    <p>
+      <strong>Nombre(s):</strong>
+      <%= @client.first_name %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
+    <p>
+      <strong>Apellido(s):</strong>
+      <%= @client.last_name %>
+    </p>
 
-<p>
-  <strong>Teléfono:</strong>
-  <%= @client.phone %>
-</p>
+    <p>
+      <strong>Rut:</strong>
+      <%= @client.rut %>
+    </p>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+    <p>
+      <strong>Email:</strong>
+      <%= @client.email %>
+    </p>
+
+    <p>
+      <strong>Teléfono:</strong>
+      <%= @client.phone %>
+    </p>
+
+    <p>
+      <strong>Dirección:</strong>
+      <%= @client.address.full_address %>
+    </p>
+
+    <%= link_to 'Edit', edit_client_path(@client) %> |
+    <%= link_to 'Back', clients_path %>
+
+  </div>
+</div>
