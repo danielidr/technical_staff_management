@@ -94,6 +94,24 @@
   </div>
 </div>
 <br>
+<% if @order.status == "Terminada" %>
+  <h3 class="mx-3">Reporte técnico</h3>
+  <div class="row px-4">
+      <div class="col-12 col-md-6 pb-4x">
+          <p>
+          <strong>Pruebas realizadas:</strong>
+          <%= @order.report.tests_performed %>
+          </p>
+          
+          <p>
+          <strong>Comentarios:</strong>
+          <%= @order.report.report_comments %>
+          </p>
+
+          <br>
+      </div>
+  </div>
+<% end %>
 <%= link_to 'Edit', edit_order_path(@order), class: "mx-3" %> |
 <%= link_to 'Back', orders_path, class: "mx-3" %>
 

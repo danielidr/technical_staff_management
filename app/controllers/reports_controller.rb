@@ -6,9 +6,6 @@ class ReportsController < ApplicationController
     @report = Report.new
   end
 
-  def show
-  end
-
   def create
     puts "************#{params.inspect}"
     @report = Report.new(report_params)
