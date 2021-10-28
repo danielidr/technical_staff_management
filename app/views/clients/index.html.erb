@@ -24,9 +24,9 @@
             <td class="d-none d-sm-table-cell"><%= client.email %></td>
             <td class="d-none d-sm-table-cell"><%= client.phone %></td>
             <td class="d-none d-sm-table-cell"><%= client.address.full_address %></td>
-            <td><%= link_to 'Show', client %></td>
-            <td class="d-none d-sm-table-cell"><%= link_to 'Edit', edit_client_path(client) %></td>
-            <td class="d-none d-sm-table-cell"><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Ver', client %></td>
+            <td class="d-none d-sm-table-cell"><%= link_to 'Editar', edit_client_path(client) %></td>
+            <td class="d-none d-sm-table-cell"><%= link_to 'Eliminar', client, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
           </tr>
         <% end %>
       </tbody>
@@ -34,7 +34,7 @@
 
     <br>
 
-    <%= link_to 'New Client', new_client_path %>
+    <%= link_to 'Nuevo cliente', new_client_path %>
 
   </div>
 </div>

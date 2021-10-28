@@ -37,19 +37,24 @@
 	body {
 		line-height: 1;
 	}
+	.alert, .notice {
+		font-size: 16px;
+		font-weight: 700;
+		letter-spacing: 1px;
+	}
 
 	.notice {
 		color: green;
+	}
+
+	.alert {
+		color: red;
 	}
 
 	.field_with_errors {
 		padding: 2px;
 		background-color: red;
 		display: table;
-	}
-
-	.alert {
-		color: red;
 	}
 
 	ol, ul {

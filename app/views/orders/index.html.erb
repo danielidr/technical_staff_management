@@ -32,10 +32,10 @@
             <td class="d-none d-sm-table-cell"><%= order.client.last_name %></td>
             <td class="d-none d-sm-table-cell"><%= order.client.address.full_address %></td>
             <td><%= order.scheduled_at.strftime("%d-%m-%Y %H:%M") %></td>
-            <td><%= link_to 'Show', order %></td>
+            <td><%= link_to 'Ver', order %></td>
             <% if current_user.role.id == 1 %>
-              <td><%= link_to 'Edit', edit_order_path(order) %></td>
-              <td class="d-none d-sm-table-cell"><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Editar', edit_order_path(order) %></td>
+              <td class="d-none d-sm-table-cell"><%= link_to 'Eliminar', order, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
             <% else %>
               <% if order.status == "Asignada" %>
                 <td><button type="button" id="geo_<%= order.id %>" class="btn btn-outline-secondary btn-sm" onclick="getLocation(<%= order.id %>)">Marcar llegada</button></td>
@@ -50,6 +50,6 @@
 
     <br>
 
-    <%= link_to 'New Order', new_order_path %>
+    <%= link_to 'Nueva orden', new_order_path %>
   </div>
 </div>
