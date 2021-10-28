@@ -1,6 +1,15 @@
 <div class="row">
   <div class="col-12 px-3">
-    <h2 class="ml-2">Ordenes</h2>
+    <div class="row">
+      <div class="col-7 col-md-10">
+        <h2 class="ml-2">Ordenes</h2>
+      </div>
+      <% if current_user.role.id == 1 %>
+        <div class="col-5 col-md-2 btn_new">
+          <%= link_to 'Crear orden', new_order_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
 
     <table>
       <thead>
