@@ -1,4 +1,4 @@
-AdminUser.create!(email: 'admin@techstaff.com', password: 'tech1234', password_confirmation: 'tech1234') if Rails.env.development?
+AdminUser.create!(email: 'admin@techstaff.com', password: 'tech1234', password_confirmation: 'tech1234')
 
 Role.create!(name: 'Coordinador')
 Role.create!(name: 'Técnico')
