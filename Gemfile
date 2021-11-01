@@ -19,6 +19,7 @@ gem 'geocoder'
 gem 'chartkick'
 gem 'groupdate'
 gem 'sendgrid-ruby'
+gem 'rollbar'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
