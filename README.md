@@ -7,9 +7,10 @@ Techstaff Management tiene estas funcionalidades:
 - Enviar ubicación: Cuando el técnico marque su llegada al lugar, desde coordinación podran saber su ubicación.
 - Enviar reporte a cliente: Cuando el técnico termina un servicio, se genera un reporte que le llegara al cliente via email.
 
-## Versiones utilizadas
-Ruby: 2.5.3
-Rails: 5.2.6
+## Pre-requisitos
+Ruby `2.5.3`
+Rails `5.2.6`
+Postgres
 
 ## Deployment:
 
@@ -44,7 +45,9 @@ rails s
 
 Se debe iniciar sesión como administrador con los siguientes datos:
 
-email: admin@techstaff.com, password: tech1234
+email: admin@techstaff.com
+password: tech1234
+
 Nota: El usuario administrador se creo al momento de cargar la información inicial en la base de datos
 
 
