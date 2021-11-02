@@ -8,8 +8,8 @@ Techstaff Management tiene estas funcionalidades:
 - Enviar reporte a cliente: Cuando el técnico termina un servicio, se genera un reporte que le llegara al cliente via email.
 
 ## Pre-requisitos
-Ruby `2.5.3`
-Rails `5.2.6`
+Ruby `2.5.3`<br/>
+Rails `5.2.6`<br/>
 Postgres
 
 ## Deployment:
@@ -45,7 +45,7 @@ rails s
 
 Se debe iniciar sesión como administrador con los siguientes datos:
 
-email: admin@techstaff.com
+email: admin@techstaff.com<br/>
 password: tech1234
 
 Nota: El usuario administrador se creo al momento de cargar la información inicial en la base de datos
