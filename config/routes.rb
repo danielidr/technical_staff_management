@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :clients
   get 'reports/new'
   post 'reports/create'
+  get 'reports/show'
   
   post '/rate' => 'rater#create', :as => 'rate'
   get 'profiles/index'
@@ -16,11 +17,7 @@ Rails.application.routes.draw do
     get "/sign_in" => "devise/sessions#new"
     get "/sign_up" => "devise/registrations#new", as: "new_user_registration"
   end
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }, :skip => [:registrations]
-    as :user do
-      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-      put 'users' => 'devise/registrations#update', :as => 'user_registration'
-    end
+  devise_for :users, :controllers => { :registrations => 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
 
   namespace :api do
     namespace :v1 do
