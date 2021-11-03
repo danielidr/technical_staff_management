@@ -1,14 +1,17 @@
 const allSlots = { 
-    "8" : "8:00 - 10:00", 
+    "08" : "8:00 - 10:00", 
     "10" : "10:00 - 12:00", 
     "13" : "13:00 - 15:00",  
     "15" : "15:00 - 17:00", 
     "17" : "17:00 - 19:00"
- };
-emptyAndDisableSlotSelect();
+};
+document.addEventListener("DOMContentLoaded", function() {
+    emptyAndDisableSlotSelect();
+});
+
 function check_slots() {
                     
-    let availableSlots = ['8','10','13','15','17'];
+    let availableSlots = ['08','10','13','15','17'];
 
 
     const user_id = $("#order_user_id").val();

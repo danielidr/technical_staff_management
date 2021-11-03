@@ -19,10 +19,12 @@ let Fn = {
 	}
 }
 
-$("#btnvalida").click(function(){
-	if (Fn.validaRut( $("#txt_rut").val() )){
-	} else {
-		$("#msgerror").html("El Rut no es válido");
-        return false;
-	}
+document.addEventListener("DOMContentLoaded", function() {
+	$("#btnvalida").click(function(){
+		if (Fn.validaRut( $("#txt_rut").val() )){
+		} else {
+			$("#msgerror").html("El Rut no es válido");
+			return false;
+		}
+	});
 });
