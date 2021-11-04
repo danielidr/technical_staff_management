@@ -4,7 +4,7 @@
         <h2><%= pluralize(report.errors.count, "error") %> prohibited this order from being saved:</h2>
 
         <ul>
-        <% report.errors.full_messages.each do |message| %>
+        <% @report.errors.full_messages.each do |message| %>
             <li><%= message %></li>
         <% end %>
         </ul>
