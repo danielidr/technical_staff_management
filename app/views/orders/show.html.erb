@@ -73,7 +73,7 @@
       <%= @order.address.full_address %>
       </p>
     <% elsif @order.status == "En el lugar" && current_user.role.id == 2 %>
-      <td><%= link_to 'Crear reporte', reports_new_path, class: "btn btn-outline-secondary btn-sm" %></td>
+      <td><%= link_to 'Crear reporte', reports_new_path(id: @order.id), class: "btn btn-outline-secondary btn-sm" %></td>
     <% end %>
 
     <br>
